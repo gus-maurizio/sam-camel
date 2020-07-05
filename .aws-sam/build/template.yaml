@@ -1,0 +1,28 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: 'sam-camel-lambda
+
+  Sample SAM Template for sam-camel-lambda
+
+  '
+Globals:
+  Function:
+    Timeout: 600
+Resources:
+  CamelLambdaFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: CamelLambdaFunction
+      Handler: com.example.camel.App::handleRequest
+      Runtime: java11
+      MemorySize: 512
+      Environment:
+        Variables:
+          PARAM1: VALUE
+Outputs:
+  HelloWorldFunction:
+    Description: Camel Lambda Function ARN
+    Value:
+      Fn::GetAtt:
+      - CamelLambdaFunction
+      - Arn
