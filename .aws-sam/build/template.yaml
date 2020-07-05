@@ -20,7 +20,7 @@ Resources:
         Variables:
           PARAM1: VALUE
 Outputs:
-  HelloWorldFunction:
+  CamelLambdaFunction:
     Description: Camel Lambda Function ARN
     Value:
       Fn::GetAtt:

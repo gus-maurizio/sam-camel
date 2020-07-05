@@ -104,30 +104,35 @@
 
 
         <!-- logging -->
+
 <!--         <dependency>
-          <groupId>org.apache.logging.log4j</groupId>
-          <artifactId>log4j-api</artifactId>
-          <version>${log4j2-version}</version>
-          <scope>runtime</scope>
-        </dependency>
-        <dependency>
-          <groupId>org.apache.logging.log4j</groupId>
-          <artifactId>log4j-core</artifactId>
-          <version>${log4j2-version}</version>
-          <scope>runtime</scope>
-        </dependency>
-        <dependency>
-          <groupId>org.apache.logging.log4j</groupId>
-          <artifactId>log4j-slf4j-impl</artifactId>
-          <version>${log4j2-version}</version>
-          <scope>runtime</scope>
-        </dependency>
- -->
-        <dependency>
             <groupId>io.symphonia</groupId>
             <artifactId>lambda-logging</artifactId>
             <version>1.0.0</version>
         </dependency>
+ -->
+        <dependency>
+          <groupId>com.amazonaws</groupId>
+          <artifactId>aws-lambda-java-log4j2</artifactId>
+          <version>1.2.0</version>
+        </dependency>
+        <dependency>
+          <groupId>org.apache.logging.log4j</groupId>
+          <artifactId>log4j-api</artifactId>
+          <version>2.13.0</version>
+        </dependency>
+        <dependency>
+          <groupId>org.apache.logging.log4j</groupId>
+          <artifactId>log4j-core</artifactId>
+          <version>2.13.2</version>
+        </dependency>
+        <dependency>
+          <groupId>org.apache.logging.log4j</groupId>
+          <artifactId>log4j-slf4j18-impl</artifactId>
+          <version>2.13.0</version>
+        </dependency>
+
+
 
         <dependency>
           <groupId>junit</groupId>
