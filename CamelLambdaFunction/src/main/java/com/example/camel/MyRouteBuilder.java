@@ -17,5 +17,10 @@ public class MyRouteBuilder extends RouteBuilder {
             .streamCaching()
             .to("log:s3?level=INFO&showAll=true");
 
+        // from("direct:lambda")
+        //     .routeId("lambda")
+        //     .streamCaching()
+        //     .to("log:lambda?level=INFO&showAll=true");
+
     }
 }

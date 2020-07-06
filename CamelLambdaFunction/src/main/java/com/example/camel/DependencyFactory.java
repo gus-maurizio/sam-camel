@@ -1,4 +1,3 @@
-
 package com.example.camel;
 
 import software.amazon.awssdk.auth.credentials.EnvironmentVariableCredentialsProvider;

@@ -105,13 +105,13 @@
 
         <!-- logging -->
 
-<!--         <dependency>
+        <dependency>
             <groupId>io.symphonia</groupId>
             <artifactId>lambda-logging</artifactId>
             <version>1.0.0</version>
         </dependency>
- -->
-        <dependency>
+
+<!--         <dependency>
           <groupId>com.amazonaws</groupId>
           <artifactId>aws-lambda-java-log4j2</artifactId>
           <version>1.2.0</version>
@@ -131,7 +131,7 @@
           <artifactId>log4j-slf4j18-impl</artifactId>
           <version>2.13.0</version>
         </dependency>
-
+ -->
 
 
         <dependency>

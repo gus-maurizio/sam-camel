@@ -17,6 +17,7 @@ import com.amazonaws.services.lambda.runtime.RequestHandler;
 import software.amazon.awssdk.services.s3.S3Client;
 
 import org.apache.camel.main.Main;
+import org.apache.camel.CamelContext;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
