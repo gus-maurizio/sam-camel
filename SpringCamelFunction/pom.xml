@@ -15,9 +15,10 @@
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
     <spring.boot-version>2.3.0.RELEASE</spring.boot-version>
+    <spring.cloud-version>Hoxton.SR6</spring.cloud-version>
     <aws.java.sdk.version>2.13.48</aws.java.sdk.version>
     <apache-camel-version>3.4.0</apache-camel-version>
-    <aws.lambda.java.version>1.2.0</aws.lambda.java.version>
+    <aws.lambda.java.version>1.2.1</aws.lambda.java.version>
   </properties>
 
   <dependencyManagement>
@@ -31,7 +32,15 @@
         <scope>import</scope>
       </dependency>
 
-      <!-- Spring Boot BOM -->
+      <!-- Spring Cloud BOM -->
+<!--       <dependency>
+        <groupId>org.springframework.cloud</groupId>
+        <artifactId>spring-cloud-dependencies</artifactId>
+        <version>${spring.cloud-version}</version>
+        <type>pom</type>
+        <scope>import</scope>
+      </dependency>
+ -->      <!-- Spring Boot BOM -->
       <dependency>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-dependencies</artifactId>
@@ -53,7 +62,13 @@
   <dependencies>
 
     <!-- Spring Boot -->
-    <dependency>
+
+<!--     <dependency>
+      <groupId>org.springframework.cloud</groupId>
+      <artifactId>spring-cloud-function-adapter-aws</artifactId>
+    </dependency>
+ -->
+<!--     <dependency>
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-web</artifactId>
       <exclusions>
@@ -67,7 +82,7 @@
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-undertow</artifactId>
     </dependency>
-    <dependency>
+ -->    <dependency>
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-actuator</artifactId>
     </dependency>
@@ -86,7 +101,17 @@
       <artifactId>camel-aws-s3</artifactId>
     </dependency>
 
+    <!-- https://mvnrepository.com/artifact/org.jboss.xnio/xnio-nio -->
+    <dependency>
+      <groupId>org.jboss.xnio</groupId>
+      <artifactId>xnio-nio</artifactId>
+      <version>3.8.1.Final</version>
+    </dependency>
+
+
+
     <!-- AWS SDK -->
+
     <dependency>
       <groupId>software.amazon.awssdk</groupId>
       <artifactId>url-connection-client</artifactId>
@@ -96,6 +121,12 @@
       <groupId>com.amazonaws</groupId>
       <artifactId>aws-lambda-java-core</artifactId>
       <version>${aws.lambda.java.version}</version>
+    </dependency>
+
+    <dependency>
+      <groupId>com.amazonaws</groupId>
+      <artifactId>aws-lambda-java-events</artifactId>
+      <version>3.1.0</version>
     </dependency>
 
     <dependency>

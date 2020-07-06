@@ -26,6 +26,7 @@ import com.google.gson.GsonBuilder;
 /**
  * Handler for requests to Lambda function.
  */
+
 public class App implements RequestHandler<Object, Object> {
 
     private static final Logger logger = LoggerFactory.getLogger(App.class);
