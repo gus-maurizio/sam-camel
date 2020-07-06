@@ -68,7 +68,9 @@ public class App implements RequestHandler<Object, Object> {
             // wait for CamelMainRunController thread 
             if (name.startsWith("CamelMain")) {
                 mainCamel = t;
-                logger.info(String.format("GOT MAIN CAMEL %-20s \t %s \t %d \t %s\n", name, state, priority, type));
+            }
+            if (name.startsWith("Camel")) {
+                logger.info(String.format("GOT CAMEL THREAD %-20s %s %d %s\n", name, state, priority, type));
             }
         }
 
