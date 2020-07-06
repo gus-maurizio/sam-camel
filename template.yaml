@@ -9,6 +9,8 @@ Description: >
 Globals:
   Function:
     Timeout: 600
+    Tags:
+      Owner:  gustavo.maurizio
 
 Resources:
   CamelLambdaFunction:

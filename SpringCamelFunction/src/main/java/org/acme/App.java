@@ -70,7 +70,7 @@ public class App implements RequestHandler<Object, Object> {
                 mainCamel = t;
             }
             if (name.startsWith("Camel")) {
-                logger.info(String.format("GOT CAMEL THREAD %-20s %s %d %s\n", name, state, priority, type));
+                logger.info(String.format("GOT CAMEL THREAD %-20s %s %d %s", name, state, priority, type));
             }
         }
 
