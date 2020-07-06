@@ -13,7 +13,8 @@ public class MySpringBootRouter extends RouteBuilder {
 
     @Override
     public void configure() {
-        from("timer:hello?period={{timer.period}}").routeId("hello")
+        from("timer:hello?period={{timer.period}}")
+            .routeId("hello")
             .transform().method("myBean", "saySomething")
             .filter(simple("${body} contains 'foo'"))
                 .to("log:foo")
@@ -29,7 +30,6 @@ public class MySpringBootRouter extends RouteBuilder {
         from("direct:start")
             .id("mydirect")
             .to("log:mydirect?level=INFO&showAll=true");
-
             
     }
 

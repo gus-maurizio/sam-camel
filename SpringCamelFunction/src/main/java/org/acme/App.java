@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 
@@ -27,6 +28,7 @@ import com.google.gson.GsonBuilder;
  * Handler for requests to Lambda function.
  */
 
+@SpringBootApplication
 public class App implements RequestHandler<Object, Object> {
 
     private static final Logger logger = LoggerFactory.getLogger(App.class);
@@ -39,18 +41,57 @@ public class App implements RequestHandler<Object, Object> {
     public Object handleRequest(final Object input, final Context context) {
         logger.info("input: {}", gson.toJson(input));
         logger.info("context: {}", gson.toJson(context));
-        Object callCamel = startCamel();
+        Object callCamel = startCamel(input);
         return input;
     }
 
-    public Object startCamel() {
+    public Object startCamel(Object input) {
+
         logger.info("Starting Camel Configuration");
+
         SpringApplication
             .run(MySpringBootApplication.class)
             .getBean(CamelContext.class)
             .createProducerTemplate()
-            .sendBody("direct:start", "hello me to direct");
-        logger.info("Ending Camel");
+            .sendBody("direct:start", input);
+
+        Set<Thread> threads = Thread.getAllStackTraces().keySet();
+        // wait for CamelMainRunController thread 
+        Thread mainCamel = null;
+
+        for (Thread t : threads) {
+            String name = t.getName();
+            Thread.State state = t.getState();
+            int priority = t.getPriority();
+            String type = t.isDaemon() ? "Daemon" : "Normal";
+            // System.out.printf("%-20s \t %s \t %d \t %s\n", name, state, priority, type);
+            // wait for CamelMainRunController thread 
+            if (name.startsWith("CamelMain")) {
+                mainCamel = t;
+                logger.info(String.format("GOT MAIN CAMEL %-20s \t %s \t %d \t %s\n", name, state, priority, type));
+            }
+        }
+
+        try {
+            logger.info("WAIT for CAMEL");  
+            // Thread.sleep(20000L);  
+            mainCamel.join();
+            logger.info("CAMEL ENDED"); 
+        } catch(InterruptedException e) {  
+            throw new RuntimeException("Thread interrupted..."+e);  
+        }  
+        // threads = Thread.getAllStackTraces().keySet();
+         
+        // for (Thread t : threads) {
+        //     String name = t.getName();
+        //     Thread.State state = t.getState();
+        //     int priority = t.getPriority();
+        //     String type = t.isDaemon() ? "Daemon" : "Normal";
+        //     System.out.printf("%-20s \t %s \t %d \t %s\n", name, state, priority, type);
+        // }
+
+
+        logger.info("Ending Camel lambda");
         return null;
     }
 
